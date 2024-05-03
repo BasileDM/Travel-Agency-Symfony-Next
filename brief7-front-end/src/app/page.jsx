@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import Hero from "@/Components/Hero/Hero";
 import CardsRow from "@/Components/CardsRow/CardsRow";
 
 import RequestMaker from "@/js/class/RequestMaker";
 
 export default function Home() {
+
+
   const [trips, setTrips] = useState();
 
   useEffect(() => {
