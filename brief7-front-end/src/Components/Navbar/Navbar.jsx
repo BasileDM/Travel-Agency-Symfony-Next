@@ -42,14 +42,13 @@ const Navbar = () => {
                 } `}
               >
                 <ul className="block lg:flex">
-                  <ListItem NavLink="/#">Home</ListItem>
-                  <ListItem NavLink="/#">Payment</ListItem>
-                  <ListItem NavLink="/#">About</ListItem>
-                  <ListItem NavLink="/#">Blog</ListItem>
+                  <ListItem NavLink="/#">Accueil</ListItem>
+                  <ListItem NavLink="/#">Destinations</ListItem>
+                  <ListItem NavLink="/#">Contact</ListItem>
                 </ul>
               </nav>
             </div>
-            <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
+            {/* <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
               <a href="/#" className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white">
                 Sign in
               </a>
@@ -60,7 +59,7 @@ const Navbar = () => {
               >
                 Sign Up
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
