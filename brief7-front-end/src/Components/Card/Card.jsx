@@ -1,6 +1,6 @@
 import React from "react";
 
-const SingleCard = ({
+const Card = ({
   image,
   Button,
   CardDescription,
@@ -41,4 +41,4 @@ const SingleCard = ({
   );
 };
 
-export default SingleCard;
+export default Card;

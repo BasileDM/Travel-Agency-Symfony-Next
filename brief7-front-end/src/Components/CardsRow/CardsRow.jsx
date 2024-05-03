@@ -1,31 +1,34 @@
 import React from "react";
-import SingleCard from "../Card/Card";
+import Card from "../Card/Card";
+import { UNSPLASH_KWS } from "@/js/config";
 
-const CardsRow = () => {
+const CardsRow = (props) => {
+  let trips = props.trips;
+  console.log(trips);
   return (
     <>
       <section className="bg-gray-2 pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px]">
         <div className="container">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <SingleCard
-              image="https://i.ibb.co/r2zns1m/image-01.jpg"
-              CardTitle="50+ Best creative website themes & templates"
+            <Card
+              image={UNSPLASH_KWS}
+              CardTitle={trips[0].name}
               titleHref="/#"
               btnHref="/#"
-              CardDescription="Lorem ipsum dolor sit amet pretium consectetur adipiscing elit. Lorem consectetur adipiscing elit."
-              Button="View Details"
+              CardDescription={trips[0].description}
+              Button="Voir Détails"
             />
-            <SingleCard
-              image="https://i.ibb.co/0nbbWM9/image-02-1.jpg"
-              CardTitle="Creative Card Component designs graphic elements"
-              CardDescription="Lorem ipsum dolor sit amet pretium consectetur adipiscing elit. Lorem consectetur adipiscing elit."
-              Button="View Details"
+            <Card
+              image={UNSPLASH_KWS}
+              CardTitle={trips[1].name}
+              CardDescription={trips[1].description}
+              Button="Voir Détails"
             />
-            <SingleCard
-              image="https://i.ibb.co/dL9fH7N/image-03-1.jpg"
-              CardTitle="The ultimate UX and UI guide to card design"
-              CardDescription="Lorem ipsum dolor sit amet pretium consectetur adipiscing elit. Lorem consectetur adipiscing elit."
-              Button="View Details"
+            <Card
+              image={UNSPLASH_KWS}
+              CardTitle={trips[2].name}
+              CardDescription={trips[2].description}
+              Button="Voir Détails"
             />
           </div>
         </div>
