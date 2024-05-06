@@ -10,12 +10,16 @@ const Navbar = () => {
           <div className="w-60 max-w-full px-4">
             <a href="/#" className="block w-full py-5">
               <img
-                src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-primary.svg"
+                // src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-primary.svg"
+                src="./imgs/logo.png"
+                style={{ borderRadius: "5px" }}
                 alt="logo"
                 className="dark:hidden"
               />
               <img
-                src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg"
+                // src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg"
+                src="./imgs/logo.png"
+                style={{ borderRadius: "5px" }}
                 alt="logo"
                 className="hidden dark:block"
               />
