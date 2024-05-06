@@ -1,6 +1,6 @@
 import React from "react";
 
-const About1 = () => {
+const About1 = (props) => {
   return (
     <>
       <section className="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] bg-white dark:bg-dark">
@@ -410,23 +410,21 @@ const About1 = () => {
 
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="mt-10 lg:mt-0">
-                <span className="block mb-4 text-lg font-semibold text-primary">Why Choose Us</span>
+                <span className="block mb-4 text-lg font-semibold text-primary">{props.tripInfo.destination.city + ", " + props.tripInfo.destination.country}</span>
                 <h2 className="mb-5 text-3xl font-bold text-dark dark:text-white sm:text-[40px]/[48px]">
-                  Make your customers happy by giving services.
+                  {props.tripInfo.name}
                 </h2>
                 <p className="mb-5 text-base text-body-color dark:text-dark-6">
-                  It is a long established fact that a reader will be distracted by the readable content of a page when
-                  looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less.
+                  {props.tripInfo.description}
                 </p>
-                <p className="mb-8 text-base text-body-color dark:text-dark-6">
-                  A domain name is one of the first steps to establishing your brand. Secure a consistent brand image
-                  with a domain name that matches your business.
+                <p className="mb-5 text-base text-body-color dark:text-dark-6">
+                  {console.log(props.tripInfo)}
                 </p>
                 <a
                   href="javascript:void(0)"
                   className="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md px-7 bg-primary hover:bg-opacity-90"
                 >
-                  Get Started
+                  Réserver !
                 </a>
               </div>
             </div>
