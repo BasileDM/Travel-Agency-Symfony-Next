@@ -8,7 +8,9 @@ export default function Contact() {
   return (
     <>
       <Navbar />
-      <ContactForm />
+      <main>
+        <ContactForm />
+      </main>
       <Footer />
     </>
   );
