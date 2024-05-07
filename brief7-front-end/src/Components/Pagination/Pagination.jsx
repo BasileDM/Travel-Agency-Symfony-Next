@@ -3,12 +3,17 @@ import React from "react";
 const Pagination = (props) => {
   let p = 1;
   let pMax = Math.ceil(props.trips.length / 12);
-  console.log(pMax);
 
   function getPagesArray() {
     let pagesArray = [];
     for (let i = 0; i < pMax; i++) {
-      pagesArray.push(<PageLink key={p} count={p} pageSrc={"/destinations?page=" + p} />);
+      pagesArray.push(
+        <PageLink 
+          key={p} 
+          count={p} 
+          pageSrc={"/destinations?page=" + p}
+          onClick={() => props.setPage(p)}
+        />);
       p++;
     }
     return pagesArray;
@@ -16,7 +21,7 @@ const Pagination = (props) => {
 
   return (
     <>
-      <section className="bg-white py-20 dark:bg-dark">
+      <section className="bg-white py-5 dark:bg-dark">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -24,7 +29,9 @@ const Pagination = (props) => {
                 <ul className="-mx-[6px] flex items-center">
                   <li className="px-[6px]">
                     <a
-                      href="/#"
+                      href={
+                        props.searchParams ? "/destinations?page=" + (props.searchParams.page - 1) : "/destinations"
+                      }
                       className="flex h-9 w-9 items-center justify-center rounded-md border border-stroke bg-transparent text-base text-body-color hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
                     >
                       <span>
@@ -42,7 +49,11 @@ const Pagination = (props) => {
 
                   <li className="px-[6px]">
                     <a
-                      href="/#"
+                      href={
+                        props.searchParams
+                          ? "/destinations?page=" + (props.searchParams.page + 1)
+                          : "/destinations?page=2"
+                      }
                       className="flex h-9 w-9 items-center justify-center rounded-md border border-stroke bg-transparent text-base text-body-color hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
                     >
                       <span>

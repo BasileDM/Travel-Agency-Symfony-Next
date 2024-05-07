@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const Hero = () => {
   return (
     <>
-      <div className="relative bg-white pb-[110px] pt-[40px] dark:bg-dark lg:pt-[40px]">
+      <div className="relative bg-white pb-[110px] pt-[60px] dark:bg-dark lg:pt-[60px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 lg:w-5/12">

@@ -6,7 +6,7 @@ import { UNSPLASH_KWS } from "@/js/config";
 export default function CardsGrid(props) {
   let trips = props.trips;
   return (
-    <section className="bg-gray-2 pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[12px]">
+    <section className="bg-gray-2 pb-10 pt-20 dark:bg-dark lg:pb-0 lg:pt-[12px]">
       <div className="container">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {trips.map((element) => {
