@@ -1,6 +1,19 @@
 import React from "react";
 
-const Pagination = () => {
+const Pagination = (props) => {
+  let p = 1;
+  let pMax = Math.ceil(props.trips.length / 12);
+  console.log(pMax);
+
+  function getPagesArray() {
+    let pagesArray = [];
+    for (let i = 0; i < pMax; i++) {
+      pagesArray.push(<PageLink key={p} count={p} pageSrc={"/destinations?page=" + p} />);
+      p++;
+    }
+    return pagesArray;
+  }
+
   return (
     <>
       <section className="bg-white py-20 dark:bg-dark">
@@ -25,12 +38,7 @@ const Pagination = () => {
                     </a>
                   </li>
 
-                  <PageLink count="1" pageSrc="/#" />
-                  <PageLink count="2" pageSrc="/#" />
-                  <PageLink count="3" pageSrc="/#" />
-                  <PageLink count="4" pageSrc="/#" />
-                  <PageLink count="5" pageSrc="/#" />
-                  <PageLink count="6" pageSrc="/#" />
+                  {getPagesArray()}
 
                   <li className="px-[6px]">
                     <a

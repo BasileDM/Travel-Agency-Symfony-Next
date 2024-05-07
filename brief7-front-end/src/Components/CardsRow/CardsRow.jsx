@@ -1,4 +1,5 @@
 import React from "react";
+
 import Card from "../Card/Card";
 import { UNSPLASH_KWS } from "@/js/config";
 import Link from "next/link";

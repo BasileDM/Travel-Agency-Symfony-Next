@@ -11,7 +11,7 @@ const Navbar = () => {
             <a href="/#" className="block w-full py-5">
               <img
                 // src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-primary.svg"
-                src="./imgs/logo.png"
+                src={ "./imgs/logo.png" }
                 style={{ borderRadius: "5px" }}
                 alt="logo"
                 className="dark:hidden"

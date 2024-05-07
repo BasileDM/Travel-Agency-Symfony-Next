@@ -10,14 +10,12 @@ const Footer = () => {
               <div className="mb-10 w-full">
                 <a href="/#" className="mb-6 inline-block max-w-[160px]">
                   <img
-                    // src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo.svg"
                     src="./imgs/logo.png"
                     style={{ borderRadius: "5px" }}
                     alt="logo"
                     className="max-w-full dark:hidden"
                   />
                   <img
-                    // src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-white.svg"
                     src="./imgs/logo.png"
                     style={{ borderRadius: "5px" }}
                     alt="logo"
@@ -80,7 +78,7 @@ const Footer = () => {
                 <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">Suivez-nous sur :</h4>
                 <div className="mb-6 flex items-center">
                   <a
-                    href="javascript:void(0)"
+                    href="#"
                     className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-primary sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg width="8" height="16" viewBox="0 0 8 16" className="fill-current">
@@ -88,7 +86,7 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="javascript:void(0)"
+                    href="#"
                     className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-primary sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg width="16" height="12" viewBox="0 0 16 12" className="fill-current">
@@ -96,7 +94,7 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="javascript:void(0)"
+                    href="#"
                     className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-primary sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg width="16" height="12" viewBox="0 0 16 12" className="fill-current">
@@ -104,7 +102,7 @@ const Footer = () => {
                     </svg>
                   </a>
                   <a
-                    href="javascript:void(0)"
+                    href="#"
                     className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-stroke text-dark hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3 dark:text-white dark:hover:border-primary sm:mr-4 lg:mr-3 xl:mr-4"
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" className="fill-current">
