@@ -13,9 +13,8 @@ const ContactForm = () => {
                   Donnez-nous votre avis
                 </h2>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Vos avis sont précieux pour nous aider à améliorer notre service. Si vous avez une suggestion de
-                  voyage, une question ou un commentaire concernant notre agence, n'hésitez pas à nous le faire savoir.
-                  Nous sommes là pour vous accompagner dans vos voyages, et pour vous offrir une expérience de qualité.
+                  Une suggestion ? Une question ? Faites-le nous le faire savoir!
+                  Nous vous accompagnons au mieux dans vos voyages pour vous offrir une expérience de qualité.
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -27,9 +26,9 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Our Location</h4>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Nous trouver</h4>
                     <p className="text-base text-body-color dark:text-dark-6">
-                      99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                      42 S.t Scam Park Pekanbaru 28292. Bahamas
                     </p>
                   </div>
                 </div>
@@ -59,8 +58,8 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Phone Number</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">(+62)81 414 257 9980</p>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Téléphone</h4>
+                    <p className="text-base text-body-color dark:text-dark-6">(+33) 1 234 567 89</p>
                   </div>
                 </div>
 
@@ -74,8 +73,8 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Email Address</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">info@yourdomain.com</p>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Email</h4>
+                    <p className="text-base text-body-color dark:text-dark-6">contact@alacarte.com</p>
                   </div>
                 </div>
               </div>

@@ -51,7 +51,7 @@ const Footer = () => {
                       </defs>
                     </svg>
                   </span>
-                  <span>+33 1 234 567 89</span>
+                  <span>(+33) 1 234 567 89</span>
                 </p>
               </div>
             </div>
