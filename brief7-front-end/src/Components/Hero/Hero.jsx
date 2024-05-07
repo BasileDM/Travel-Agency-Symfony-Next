@@ -1,12 +1,10 @@
-import React, { useState } from "react";
 import { UNSPLASH_HERO } from "@/js/config";
-import Navbar from "@/Components/Navbar/Navbar";
+import React, { useState } from "react";
 
 const Hero = () => {
   return (
     <>
-      <Navbar />
-      <div className="relative bg-white pb-[110px] pt-[80px] dark:bg-dark lg:pt-[80px]">
+      <div className="relative bg-white pb-[110px] pt-[40px] dark:bg-dark lg:pt-[40px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 lg:w-5/12">
