@@ -13,7 +13,7 @@ const ContactForm = () => {
                   Donnez-nous votre avis
                 </h2>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Une suggestion ? Une question ? Faites-le nous le faire savoir!
+                  Une suggestion ? Une question ? Faites-le nous savoir!
                   Nous vous accompagnons au mieux dans vos voyages pour vous offrir une expérience de qualité.
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
