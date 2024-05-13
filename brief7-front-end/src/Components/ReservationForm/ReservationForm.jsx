@@ -2,7 +2,7 @@ import RequestMaker from "@/js/class/RequestMaker";
 import { API_URL } from "@/js/config";
 import React from "react";
 
-const ContactForm = () => {
+const ReservationForm = (props) => {
   function sendRequest() {
     const body = {
       first_name: document.getElementsByName("firstName")[0].value,
@@ -31,13 +31,12 @@ const ContactForm = () => {
           <div className="-mx-4 flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
-                <span className="mb-4 block text-base font-semibold text-primary">Nous contacter</span>
+                <span className="mb-4 block text-base font-semibold text-primary">Réservation</span>
                 <h2 className="mb-6 text-[32px] font-bold uppercase text-dark dark:text-white sm:text-[40px] lg:text-[36px] xl:text-[40px]">
-                  Donnez-nous votre avis
+                  864€
                 </h2>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Une suggestion ? Une question ? Faites-le nous savoir! Nous vous accompagnons au mieux dans vos
-                  voyages pour vous offrir une expérience de qualité.
+                  {/* {props.tripInfo.description} */}
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -49,9 +48,9 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Nous trouver</h4>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Prestation 1</h4>
                     <p className="text-base text-body-color dark:text-dark-6">
-                      42 S.t Scam Park Pekanbaru 28292. Bahamas
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, distinctio!
                     </p>
                   </div>
                 </div>
@@ -81,8 +80,8 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Téléphone</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">(+33) 1 234 567 89</p>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Prestation 2</h4>
+                    <p className="text-base text-body-color dark:text-dark-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, reprehenderit numquam dolores fuga ad sapiente!</p>
                   </div>
                 </div>
 
@@ -96,8 +95,8 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Email</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">contact@alacarte.com</p>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Prestation 3</h4>
+                    <p className="text-base text-body-color dark:text-dark-6">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                   </div>
                 </div>
               </div>
@@ -112,12 +111,12 @@ const ContactForm = () => {
                   <ContactInputBox type="text" name="subject" placeholder="Sujet" />
                   <ContactTextArea row="6" placeholder="Message..." name="message" defaultValue="" />
                   <div>
-                    <div
+                    <button
                       onClick={sendRequest}
                       className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
                     >
-                      Envoyer
-                    </div>
+                      Réserver
+                    </button>
                   </div>
                 </form>
                 <div>
@@ -589,7 +588,7 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ReservationForm;
 
 const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
   return (
