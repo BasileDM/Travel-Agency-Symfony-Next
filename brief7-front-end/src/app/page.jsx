@@ -2,6 +2,8 @@
 
 import { useEffect, useState, createContext } from "react";
 
+import { API_URL } from "@/js/config";
+
 import Hero from "@/Components/Hero/Hero";
 import CardsRow from "@/Components/CardsRow/CardsRow";
 import Footer from "@/Components/Footer/Footer";
@@ -13,7 +15,7 @@ export default function Home() {
   const [trips, setTrips] = useState();
 
   useEffect(() => {
-    new RequestMaker("http://127.0.0.1:8000/api/trips", "GET").send().then((data) => {
+    new RequestMaker(API_URL + "trips", "GET").send().then((data) => {
       setTrips(data);
     });
   }, []);

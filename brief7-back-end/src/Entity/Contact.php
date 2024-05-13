@@ -16,18 +16,23 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['api_contact_new'])]
     private ?string $first_name = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['api_contact_new'])]
     private ?string $last_name = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['api_contact_new'])]
     private ?string $subject = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['api_contact_new'])]
     private ?string $message = null;
 
     #[ORM\Column(length: 80)]
+    #[Groups(['api_contact_new'])]
     private ?string $mail = null;
 
     #[ORM\ManyToOne(inversedBy: 'contacts')]

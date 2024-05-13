@@ -1,6 +1,27 @@
+import RequestMaker from "@/js/class/RequestMaker";
+import { API_URL } from "@/js/config";
 import React from "react";
 
 const ContactForm = () => {
+  function sendRequest() {
+    const request = new RequestMaker(API_URL + "contact/new", "POST", {
+      first_name: document.getElementsByName("firstName")[0].value,
+      last_name: document.getElementsByName("lastName")[0].value,
+      mail: document.getElementsByName("mail")[0].value,
+      phone: document.getElementsByName("phone")[0].value,
+      subject: document.getElementsByName("subject")[0].value,
+      message: document.getElementsByName("message")[0].value,
+    })
+      .send()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        throw error;
+      });
+  }
+
   return (
     <>
       <section className="relative z-10 overflow-hidden bg-white py-20 dark:bg-dark lg:py-[120px]">
@@ -82,17 +103,19 @@ const ContactForm = () => {
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
                 <form>
-                  <ContactInputBox type="text" name="name" placeholder="Your Name" />
-                  <ContactInputBox type="text" name="email" placeholder="Your Email" />
-                  <ContactInputBox type="text" name="phone" placeholder="Your Phone" />
-                  <ContactTextArea row="6" placeholder="Your Message" name="details" defaultValue="" />
+                  <ContactInputBox type="text" name="firstName" placeholder="Prénom" />
+                  <ContactInputBox type="text" name="lastName" placeholder="Nom" />
+                  <ContactInputBox type="text" name="mail" placeholder="Mail" />
+                  <ContactInputBox type="text" name="phone" placeholder="Téléphone" />
+                  <ContactInputBox type="text" name="subject" placeholder="Sujet" />
+                  <ContactTextArea row="6" placeholder="Message..." name="message" defaultValue="" />
                   <div>
-                    <button
-                      type="submit"
+                    <div
+                      onClick={sendRequest}
                       className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
                     >
                       Send Message
-                    </button>
+                    </div>
                   </div>
                 </form>
                 <div>
