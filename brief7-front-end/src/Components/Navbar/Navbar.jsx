@@ -11,7 +11,7 @@ const Navbar = () => {
             <a href="/#" className="block w-full py-5">
               <img
                 // src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo-primary.svg"
-                src="./imgs/logo.png"
+                src={ "./imgs/logo.png" }
                 style={{ borderRadius: "5px" }}
                 alt="logo"
                 className="dark:hidden"
@@ -41,13 +41,13 @@ const Navbar = () => {
               <nav
                 // :className="!navbarOpen && 'hidden' "
                 id="navbarCollapse"
-                className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
+                className={`z-50 absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
                   !open && "hidden"
                 } `}
               >
                 <ul className="block lg:flex">
                   <ListItem NavLink="/#">Accueil</ListItem>
-                  <ListItem NavLink="/#">Destinations</ListItem>
+                  <ListItem NavLink="/destinations">Destinations</ListItem>
                   <ListItem NavLink="/contact">Contact</ListItem>
                 </ul>
               </nav>
