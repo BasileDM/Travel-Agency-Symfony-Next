@@ -3,6 +3,7 @@ import { API_URL } from "@/js/config";
 import React from "react";
 
 const ReservationForm = (props) => {
+  console.log(props);
   function sendRequest() {
     const body = {
       first_name: document.getElementsByName("firstName")[0].value,
@@ -36,7 +37,7 @@ const ReservationForm = (props) => {
                   864€
                 </h2>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  {/* {props.tripInfo.description} */}
+                  {props.tripInfo && props.tripInfo.description}
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -81,7 +82,10 @@ const ReservationForm = (props) => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Prestation 2</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, reprehenderit numquam dolores fuga ad sapiente!</p>
+                    <p className="text-base text-body-color dark:text-dark-6">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, reprehenderit numquam dolores fuga
+                      ad sapiente!
+                    </p>
                   </div>
                 </div>
 
@@ -96,7 +100,9 @@ const ReservationForm = (props) => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Prestation 3</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p className="text-base text-body-color dark:text-dark-6">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -104,12 +110,11 @@ const ReservationForm = (props) => {
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
                 <form>
+                  <ContactDateBox type="date" name="date" placeholder="Date" />
                   <ContactInputBox type="text" name="firstName" placeholder="Prénom" />
                   <ContactInputBox type="text" name="lastName" placeholder="Nom" />
                   <ContactInputBox type="text" name="mail" placeholder="Mail" />
                   <ContactInputBox type="text" name="phone" placeholder="Téléphone" />
-                  <ContactInputBox type="text" name="subject" placeholder="Sujet" />
-                  <ContactTextArea row="6" placeholder="Message..." name="message" defaultValue="" />
                   <div>
                     <button
                       onClick={sendRequest}
@@ -590,22 +595,6 @@ const ReservationForm = (props) => {
 
 export default ReservationForm;
 
-const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
-  return (
-    <>
-      <div className="mb-6">
-        <textarea
-          rows={row}
-          placeholder={placeholder}
-          name={name}
-          className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-          defaultValue={defaultValue}
-        />
-      </div>
-    </>
-  );
-};
-
 const ContactInputBox = ({ type, placeholder, name }) => {
   return (
     <>
@@ -614,6 +603,27 @@ const ContactInputBox = ({ type, placeholder, name }) => {
           type={type}
           placeholder={placeholder}
           name={name}
+          className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
+        />
+      </div>
+    </>
+  );
+};
+
+const ContactDateBox = ({ type, placeholder, name }) => {
+  return (
+    <>
+      <div className="mb-6">
+        <input
+          type={type}
+          placeholder={placeholder + 'de départ'}
+          name={'start_' + name}
+          className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
+        />
+        <input
+          type={type}
+          placeholder={placeholder + 'de retour'}
+          name={'end_' + name}
           className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
         />
       </div>
