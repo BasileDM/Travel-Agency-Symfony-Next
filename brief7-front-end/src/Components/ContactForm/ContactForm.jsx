@@ -4,18 +4,17 @@ import React from "react";
 
 const ContactForm = () => {
   function sendRequest() {
-    const request = new RequestMaker(API_URL + "contact/new", "POST", {
+    const body = {
       first_name: document.getElementsByName("firstName")[0].value,
       last_name: document.getElementsByName("lastName")[0].value,
       mail: document.getElementsByName("mail")[0].value,
       phone: document.getElementsByName("phone")[0].value,
       subject: document.getElementsByName("subject")[0].value,
       message: document.getElementsByName("message")[0].value,
-    })
-      .send()
-      .then((data) => {
-        console.log(data);
-      })
+    };
+
+    new RequestMaker(API_URL + "contact/new", "POST", body).send()
+      .then((data) => {console.log(data);})
       .catch((error) => {
         console.error("Error:", error);
         throw error;

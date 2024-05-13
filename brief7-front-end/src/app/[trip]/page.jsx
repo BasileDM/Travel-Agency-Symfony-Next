@@ -4,6 +4,7 @@ import About1 from "@/Components/About/About";
 import Footer from "@/Components/Footer/Footer";
 import Navbar from "@/Components/Navbar/Navbar";
 import RequestMaker from "@/js/class/RequestMaker";
+import { API_URL } from "@/js/config";
 import { useEffect, useState } from "react";
 
 export default function tripDetails(props) {
@@ -11,7 +12,7 @@ export default function tripDetails(props) {
   let tripName = props.params.trip.split("-").join(" ");
 
   useEffect(() => {
-    new RequestMaker("http://127.0.0.1:8000/api/trip/" + tripName, "GET").send().then((data) => {
+    new RequestMaker(API_URL + "trip/" + tripName, "GET").send().then((data) => {
       setTripInfo(data);
       console.log(data);
     });
