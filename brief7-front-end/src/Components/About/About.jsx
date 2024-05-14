@@ -432,7 +432,7 @@ const About1 = (props) => {
                 <p className="mb-5 text-base text-body-color dark:text-dark-6">
                   {"Réservable "}
                   {"du " + startDate}
-                  {" au " + endDate}
+                  {" au " + endDate + "."}
                 </p>
                 <p className="mb-5 text-base text-body-color dark:text-dark-6">
                   Catégories :

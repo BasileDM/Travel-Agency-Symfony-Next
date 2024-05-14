@@ -22,7 +22,7 @@ const ReservationForm = (props) => {
       last_name: document.getElementsByName("lastName")[0].value,
       phone: document.getElementsByName("phone")[0].value,
       start_date: value.startDate,
-      end_date: "1990-01-01",
+      end_date: value.endDate,
       mail: document.getElementsByName("mail")[0].value,
     };
 
@@ -122,7 +122,7 @@ const ReservationForm = (props) => {
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12" id="reservation">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
                 <form>
-                  <Datepicker value={value} onChange={handleValueChange} popoverDirection="down" name="date" />
+                  <Datepicker value={value} onChange={handleValueChange} popoverDirection="down" name="date" containerClassName={"relative rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6 mb-6"} showFooter={true} placeholder={"Sélectionnez une date ici"} maxDate={new Date().setMonth(11)} minDate={new Date()}/>
                   {/* <ContactDateBox type="date" name="date" placeholder="Date" /> */}
                   <ContactInputBox type="text" name="firstName" placeholder="Prénom" />
                   <ContactInputBox type="text" name="lastName" placeholder="Nom" />
