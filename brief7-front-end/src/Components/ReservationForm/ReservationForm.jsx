@@ -1,19 +1,44 @@
 import RequestMaker from "@/js/class/RequestMaker";
 import { API_URL } from "@/js/config";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const ContactForm = () => {
+import Datepicker from "react-tailwindcss-datepicker";
+
+const ReservationForm = (props) => {
+
+  const [value, setValue] = useState({
+    startDate: new Date().toLocaleDateString("fr-FR"),
+    endDate: new Date().toLocaleDateString("fr-FR") + 1,
+  });
+
+  useEffect(() => {
+    setValue({
+      startDate:  props.tripInfo && 
+                  props.tripInfo.start_date > new Date() ? 
+                  props.tripInfo.start_date : 
+                  new Date(),
+
+      endDate:    props.tripInfo && 
+                  props.tripInfo.end_date,
+    });
+  }, [props.tripInfo]);
+
+  const handleValueChange = (newValue) => {
+    setValue(newValue);
+  };
+
   function sendRequest() {
     const body = {
+      trip: props.tripInfo.id,
       first_name: document.getElementsByName("firstName")[0].value,
       last_name: document.getElementsByName("lastName")[0].value,
-      mail: document.getElementsByName("mail")[0].value,
       phone: document.getElementsByName("phone")[0].value,
-      subject: document.getElementsByName("subject")[0].value,
-      message: document.getElementsByName("message")[0].value,
+      start_date: value.startDate,
+      end_date: value.endDate,
+      mail: document.getElementsByName("mail")[0].value,
     };
 
-    new RequestMaker(API_URL + "contact/new", "POST", body)
+    new RequestMaker(API_URL + "reservation/new", "POST", body)
       .send()
       .then((data) => {
         console.log(data);
@@ -31,13 +56,12 @@ const ContactForm = () => {
           <div className="-mx-4 flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
-                <span className="mb-4 block text-base font-semibold text-primary">Nous contacter</span>
+                <span className="mb-4 block text-base font-semibold text-primary">Réservation</span>
                 <h2 className="mb-6 text-[32px] font-bold uppercase text-dark dark:text-white sm:text-[40px] lg:text-[36px] xl:text-[40px]">
-                  Donnez-nous votre avis
+                  864€
                 </h2>
                 <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Une suggestion ? Une question ? Faites-le nous savoir! Nous vous accompagnons au mieux dans vos
-                  voyages pour vous offrir une expérience de qualité.
+                  {props.tripInfo && props.tripInfo.description}
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -49,9 +73,9 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Nous trouver</h4>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Prestation 1</h4>
                     <p className="text-base text-body-color dark:text-dark-6">
-                      42 S.t Scam Park Pekanbaru 28292. Bahamas
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, distinctio!
                     </p>
                   </div>
                 </div>
@@ -81,8 +105,11 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Téléphone</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">(+33) 1 234 567 89</p>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Prestation 2</h4>
+                    <p className="text-base text-body-color dark:text-dark-6">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, reprehenderit numquam dolores fuga
+                      ad sapiente!
+                    </p>
                   </div>
                 </div>
 
@@ -96,27 +123,48 @@ const ContactForm = () => {
                     </svg>
                   </div>
                   <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Email</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">contact@alacarte.com</p>
+                    <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">Prestation 3</h4>
+                    <p className="text-base text-body-color dark:text-dark-6">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
+            <div className="w-full px-4 lg:w-1/2 xl:w-5/12" id="reservation">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
                 <form>
+                  <Datepicker 
+                    value={value} 
+                    onChange={handleValueChange} 
+                    popoverDirection="down" 
+                    name="date" 
+                    inputClassName={"w-full rounded border border-stroke px-4 py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6 mb-6"} 
+                    toggleClassName="absolute bg-blue-600 rounded-r text-white right-0 h-[49px] px-[10px] text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+                    showFooter={true} 
+                    placeholder={"Sélectionnez une date ici"}  
+                    minDate={props.tripInfo && props.tripInfo.start_date > new Date() ? props.tripInfo.start_date : new Date()} 
+                    maxDate={props.tripInfo && props.tripInfo.end_date}
+                    separator=" au "
+                    displayFormat="D MMMM YYYY"
+                    i18n="fr"
+                    configs={{
+                      footer: {
+                        cancel: "Quitter",
+                        apply: "Appliquer"
+                        }
+                    }}
+                  />
                   <ContactInputBox type="text" name="firstName" placeholder="Prénom" />
                   <ContactInputBox type="text" name="lastName" placeholder="Nom" />
                   <ContactInputBox type="text" name="mail" placeholder="Mail" />
                   <ContactInputBox type="text" name="phone" placeholder="Téléphone" />
-                  <ContactInputBox type="text" name="subject" placeholder="Sujet" />
-                  <ContactTextArea row="6" placeholder="Message..." name="message" defaultValue="" />
                   <div>
                     <div
                       onClick={sendRequest}
                       className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
                     >
-                      Envoyer
+                      Réserver
                     </div>
                   </div>
                 </form>
@@ -589,23 +637,7 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
-
-const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
-  return (
-    <>
-      <div className="mb-6">
-        <textarea
-          rows={row}
-          placeholder={placeholder}
-          name={name}
-          className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-          defaultValue={defaultValue}
-        />
-      </div>
-    </>
-  );
-};
+export default ReservationForm;
 
 const ContactInputBox = ({ type, placeholder, name }) => {
   return (
@@ -615,6 +647,27 @@ const ContactInputBox = ({ type, placeholder, name }) => {
           type={type}
           placeholder={placeholder}
           name={name}
+          className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
+        />
+      </div>
+    </>
+  );
+};
+
+const ContactDateBox = ({ type, placeholder, name }) => {
+  return (
+    <>
+      <div className="mb-6">
+        <input
+          type={type}
+          placeholder={placeholder + "de départ"}
+          name={"start_" + name}
+          className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
+        />
+        <input
+          type={type}
+          placeholder={placeholder + "de retour"}
+          name={"end_" + name}
           className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
         />
       </div>
