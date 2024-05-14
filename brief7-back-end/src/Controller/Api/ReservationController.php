@@ -23,6 +23,7 @@ class ReservationController extends AbstractController
         $errors = $validator->validate($reservation);
         if(count($errors) > 0) {
             return $this->json($errors, JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+            
         } else {
             $trip = $tripRepository->find($request->getPayload()->getInt('trip'));
             $reservation->setTrip($trip);

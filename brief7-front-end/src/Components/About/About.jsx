@@ -430,19 +430,22 @@ const About1 = (props) => {
                   {props.tripInfo.name}
                 </h2>
                 <p className="mb-5 text-base text-body-color dark:text-dark-6">
-                  {"Disponibilité : "}
-                  <br />
+                  {"Réservable "}
                   {"du " + startDate}
-                  <br />
-                  {"au " + endDate}
+                  {" au " + endDate}
                 </p>
-                <p className="mb-5 text-base text-body-color dark:text-dark-6">{console.log(props.tripInfo)}</p>
-                <a
-                  href="javascript:void(0)"
+                <p className="mb-5 text-base text-body-color dark:text-dark-6">
+                  Catégories :
+                  {props.tripInfo.category.map((category) => {
+                    return " " + category.name + " ";
+                  })}
+                </p>
+                <button
+                  onClick={() => document.getElementById("reservation").scrollIntoView({ behavior: "smooth" })}
                   className="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md px-7 bg-primary hover:bg-opacity-90"
                 >
                   Réserver !
-                </a>
+                </button>
               </div>
             </div>
           </div>

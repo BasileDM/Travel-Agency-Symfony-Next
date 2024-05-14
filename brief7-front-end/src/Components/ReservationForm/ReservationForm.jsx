@@ -12,13 +12,10 @@ const ReservationForm = (props) => {
   });
 
   const handleValueChange = (newValue) => {
-    console.log("newValue:", newValue);
     setValue(newValue);
   };
 
-  console.log(props);
   function sendRequest() {
-    console.log(props.tripInfo.id);
     const body = {
       trip: props.tripInfo.id,
       first_name: document.getElementsByName("firstName")[0].value,
@@ -122,7 +119,7 @@ const ReservationForm = (props) => {
                 </div>
               </div>
             </div>
-            <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
+            <div className="w-full px-4 lg:w-1/2 xl:w-5/12" id="reservation">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
                 <form>
                   <Datepicker value={value} onChange={handleValueChange} popoverDirection="down" name="date" />
