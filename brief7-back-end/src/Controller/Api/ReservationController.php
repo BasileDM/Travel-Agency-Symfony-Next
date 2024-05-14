@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\Reservation;
+use App\Repository\TripRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,7 +16,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class ReservationController extends AbstractController
 {
     #[Route('/new', name: 'new', methods: ['POST'])]
-    public function new(Request $request, EntityManagerInterface $em, ValidatorInterface $validator, SerializerInterface $serializer): JsonResponse
+    public function new(Request $request, EntityManagerInterface $em, ValidatorInterface $validator, SerializerInterface $serializer, TripRepository $tripRepository)
     {
         $reservation = $serializer->deserialize($request->getContent(), Reservation::class, 'json', ['groups' => 'api_reservation_new']);
 
@@ -23,6 +24,8 @@ class ReservationController extends AbstractController
         if(count($errors) > 0) {
             return $this->json($errors, JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
         } else {
+            $trip = $tripRepository->find($request->getPayload()->getInt('trip'));
+            $reservation->setTrip($trip);
             $em->persist($reservation);
             $em->flush();
             return $this->json(null, JsonResponse::HTTP_CREATED);

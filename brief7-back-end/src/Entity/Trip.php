@@ -15,7 +15,7 @@ class Trip
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['api_trip_all', 'api_trip_show'])]
+    #[Groups(['api_trip_all', 'api_trip_show', 'api_reservation_new'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]

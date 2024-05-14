@@ -18,13 +18,14 @@ const ReservationForm = (props) => {
 
   console.log(props);
   function sendRequest() {
+    console.log(props.tripInfo.id);
     const body = {
-      trip_id: props.tripInfo.id,
+      trip: props.tripInfo.id,
       first_name: document.getElementsByName("firstName")[0].value,
       last_name: document.getElementsByName("lastName")[0].value,
       phone: document.getElementsByName("phone")[0].value,
       start_date: value.startDate,
-      end_date: value.endDate,
+      end_date: "1990-01-01",
       mail: document.getElementsByName("mail")[0].value,
     };
 
