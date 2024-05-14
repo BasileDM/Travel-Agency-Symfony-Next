@@ -1,5 +1,6 @@
 import Datepicker from "react-tailwindcss-datepicker";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { filtersContext } from "@/app/destinations/page";
 
 export default function FiltersBar() {
   const [value, setValue] = useState({
@@ -8,15 +9,17 @@ export default function FiltersBar() {
   });
 
   const handleValueChange = (newValue) => {
-    console.log("newValue:", newValue);
     setValue(newValue);
   };
 
+  const destination = useContext(filtersContext);
+  console.log(destination.destination); // HEEEEEEEEEEEEEELP
+
   return (
-    <section className="py-12 dark:bg-dark">
-      <div className="container">
+    <section className="py-0 dark:bg-dark">
+      <div className="container -py-6">
         <div className="-mx-4 flex flex-wrap">
-          <DefaultColumn>
+          <DefaultColumn >
             <SelectDestination />
           </DefaultColumn>
 
@@ -58,7 +61,7 @@ export default function FiltersBar() {
 
 const DefaultColumn = ({ children }) => {
   return (
-    <div className="w-full px-4 md:w-1/2 lg:w-1/3">
+    <div className="w-full px-4 md:w-1/2 lg:w-1/3 mt-0">
       <div className="mb-12">{children}</div>
     </div>
   );
@@ -126,15 +129,18 @@ const CategorySelect = () => {
     <>
       <label className="mb-[10px] block text-base font-medium text-dark dark:text-white">Category</label>
       <div className="relative z-20">
-        <select className="relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2">
+        <select 
+          className="relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
+          onChange={() => console.log("test")}
+        >
           <option value="" className="dark:bg-dark-2">
             Option
           </option>
           <option value="" className="dark:bg-dark-2">
-            Option
+            Nope
           </option>
           <option value="" className="dark:bg-dark-2">
-            Option
+            VeryOptionYes
           </option>
         </select>
         <span className="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color"></span>
