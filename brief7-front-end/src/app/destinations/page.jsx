@@ -8,6 +8,7 @@ import CardsGrid from "@/Components/CardsGrid/CardsGrid";
 import Footer from "@/Components/Footer/Footer";
 import Navbar from "@/Components/Navbar/Navbar";
 import Pagination from "@/Components/Pagination/Pagination";
+import FiltersBar from "@/Components/FiltersBar/FiltersBar";
 
 export default function Destinations(props) {
   const [trips, setTrips] = useState();
@@ -35,6 +36,7 @@ export default function Destinations(props) {
     <>
       <Navbar />
       <main>
+        <FiltersBar />
         {trips && <CardsGrid trips={displayedTrips} />}
         {trips && <Pagination trips={trips} setPage={setPage} page={page} />}
       </main>

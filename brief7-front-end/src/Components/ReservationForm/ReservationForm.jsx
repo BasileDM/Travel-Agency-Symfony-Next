@@ -146,7 +146,7 @@ const ReservationForm = (props) => {
                     minDate={props.tripInfo && props.tripInfo.start_date > new Date() ? props.tripInfo.start_date : new Date()} 
                     maxDate={props.tripInfo && props.tripInfo.end_date}
                     separator=" au "
-                    displayFormat="D MMMM YYYY"
+                    displayFormat="DD/MM/YYYY"
                     i18n="fr"
                     configs={{
                       footer: {
