@@ -1,20 +1,34 @@
 import RequestMaker from "@/js/class/RequestMaker";
 import { API_URL } from "@/js/config";
-import React from "react";
+import React, { useState } from "react";
+
+import Datepicker from "react-tailwindcss-datepicker";
 
 const ReservationForm = (props) => {
+
+  const [value, setValue] = useState({
+    startDate: new Date(),
+    endDate: new Date().setMonth(11),
+  });
+
+  const handleValueChange = (newValue) => {
+    console.log("newValue:", newValue);
+    setValue(newValue);
+  };
+
   console.log(props);
   function sendRequest() {
     const body = {
+      trip_id: props.tripInfo.id,
       first_name: document.getElementsByName("firstName")[0].value,
       last_name: document.getElementsByName("lastName")[0].value,
-      mail: document.getElementsByName("mail")[0].value,
       phone: document.getElementsByName("phone")[0].value,
-      subject: document.getElementsByName("subject")[0].value,
-      message: document.getElementsByName("message")[0].value,
+      start_date: value.startDate,
+      end_date: value.endDate,
+      mail: document.getElementsByName("mail")[0].value,
     };
 
-    new RequestMaker(API_URL + "contact/new", "POST", body)
+    new RequestMaker(API_URL + "reservation/new", "POST", body)
       .send()
       .then((data) => {
         console.log(data);
@@ -110,18 +124,19 @@ const ReservationForm = (props) => {
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
                 <form>
-                  <ContactDateBox type="date" name="date" placeholder="Date" />
+                  <Datepicker value={value} onChange={handleValueChange} popoverDirection="down" name="date" />
+                  {/* <ContactDateBox type="date" name="date" placeholder="Date" /> */}
                   <ContactInputBox type="text" name="firstName" placeholder="Prénom" />
                   <ContactInputBox type="text" name="lastName" placeholder="Nom" />
                   <ContactInputBox type="text" name="mail" placeholder="Mail" />
                   <ContactInputBox type="text" name="phone" placeholder="Téléphone" />
                   <div>
-                    <button
+                    <div
                       onClick={sendRequest}
                       className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
                     >
                       Réserver
-                    </button>
+                    </div>
                   </div>
                 </form>
                 <div>
@@ -616,14 +631,14 @@ const ContactDateBox = ({ type, placeholder, name }) => {
       <div className="mb-6">
         <input
           type={type}
-          placeholder={placeholder + 'de départ'}
-          name={'start_' + name}
+          placeholder={placeholder + "de départ"}
+          name={"start_" + name}
           className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
         />
         <input
           type={type}
-          placeholder={placeholder + 'de retour'}
-          name={'end_' + name}
+          placeholder={placeholder + "de retour"}
+          name={"end_" + name}
           className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
         />
       </div>

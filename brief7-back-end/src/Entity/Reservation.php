@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -15,25 +16,32 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['api_reservation_new'])]
     private ?string $first_name = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['api_reservation_new'])]
     private ?string $last_name = null;
 
     #[ORM\Column(length: 12)]
+    #[Groups(['api_reservation_new'])]
     private ?string $phone = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['api_reservation_new'])]
     private ?\DateTimeInterface $start_date = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['api_reservation_new'])]
     private ?\DateTimeInterface $end_date = null;
 
     #[ORM\Column(length: 80)]
+    #[Groups(['api_reservation_new'])]
     private ?string $mail = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['api_reservation_new'])]
     private ?Trip $trip = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
