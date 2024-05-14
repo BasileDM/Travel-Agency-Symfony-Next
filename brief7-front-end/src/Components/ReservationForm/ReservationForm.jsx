@@ -6,8 +6,6 @@ import Datepicker from "react-tailwindcss-datepicker";
 
 const ReservationForm = (props) => {
 
-  console.log(props.tripInfo);
-
   const [value, setValue] = useState({
     startDate: new Date().toLocaleDateString("fr-FR"),
     endDate: new Date().toLocaleDateString("fr-FR") + 1,
@@ -15,8 +13,13 @@ const ReservationForm = (props) => {
 
   useEffect(() => {
     setValue({
-      startDate: props.tripInfo && props.tripInfo.start_date > new Date() ? props.tripInfo.start_date : new Date(),
-      endDate: props.tripInfo && props.tripInfo.end_date,
+      startDate:  props.tripInfo && 
+                  props.tripInfo.start_date > new Date() ? 
+                  props.tripInfo.start_date : 
+                  new Date(),
+
+      endDate:    props.tripInfo && 
+                  props.tripInfo.end_date,
     });
   }, [props.tripInfo]);
 
@@ -152,7 +155,6 @@ const ReservationForm = (props) => {
                         }
                     }}
                   />
-                  {/* <ContactDateBox type="date" name="date" placeholder="Date" /> */}
                   <ContactInputBox type="text" name="firstName" placeholder="Prénom" />
                   <ContactInputBox type="text" name="lastName" placeholder="Nom" />
                   <ContactInputBox type="text" name="mail" placeholder="Mail" />
