@@ -1,15 +1,24 @@
 import RequestMaker from "@/js/class/RequestMaker";
 import { API_URL } from "@/js/config";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Datepicker from "react-tailwindcss-datepicker";
 
 const ReservationForm = (props) => {
 
+  console.log(props.tripInfo);
+
   const [value, setValue] = useState({
-    startDate: new Date(),
-    endDate: new Date().setMonth(11),
+    startDate: new Date().toLocaleDateString("fr-FR"),
+    endDate: new Date().toLocaleDateString("fr-FR") + 1,
   });
+
+  useEffect(() => {
+    setValue({
+      startDate: props.tripInfo && props.tripInfo.start_date > new Date() ? props.tripInfo.start_date : new Date(),
+      endDate: props.tripInfo && props.tripInfo.end_date,
+    });
+  }, [props.tripInfo]);
 
   const handleValueChange = (newValue) => {
     setValue(newValue);
@@ -122,7 +131,27 @@ const ReservationForm = (props) => {
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12" id="reservation">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
                 <form>
-                  <Datepicker value={value} onChange={handleValueChange} popoverDirection="down" name="date" containerClassName={"relative rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6 mb-6"} showFooter={true} placeholder={"Sélectionnez une date ici"} maxDate={new Date().setMonth(11)} minDate={new Date()}/>
+                  <Datepicker 
+                    value={value} 
+                    onChange={handleValueChange} 
+                    popoverDirection="down" 
+                    name="date" 
+                    inputClassName={"w-full rounded border border-stroke px-4 py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6 mb-6"} 
+                    toggleClassName="absolute bg-blue-600 rounded-r text-white right-0 h-[49px] px-[10px] text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+                    showFooter={true} 
+                    placeholder={"Sélectionnez une date ici"}  
+                    minDate={props.tripInfo && props.tripInfo.start_date > new Date() ? props.tripInfo.start_date : new Date()} 
+                    maxDate={props.tripInfo && props.tripInfo.end_date}
+                    separator=" au "
+                    displayFormat="D MMMM YYYY"
+                    i18n="fr"
+                    configs={{
+                      footer: {
+                        cancel: "Quitter",
+                        apply: "Appliquer"
+                        }
+                    }}
+                  />
                   {/* <ContactDateBox type="date" name="date" placeholder="Date" /> */}
                   <ContactInputBox type="text" name="firstName" placeholder="Prénom" />
                   <ContactInputBox type="text" name="lastName" placeholder="Nom" />
