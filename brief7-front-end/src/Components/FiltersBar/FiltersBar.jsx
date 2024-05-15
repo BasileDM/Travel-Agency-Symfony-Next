@@ -1,16 +1,18 @@
 import Datepicker from "react-tailwindcss-datepicker";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
 import { FiltersContext } from "@/app/FiltersContext";
+import RequestMaker from "@/js/class/RequestMaker";
 
 export default function FiltersBar() {
-  
   const { filters } = useContext(FiltersContext);
 
+  // Value is used by react-tailwindcss-datepicker
   const [value, setValue] = useState({
     startDate: new Date(),
     endDate: new Date().setMonth(11),
   });
-
+  // handleValueChange is used by react-tailwindcss-datepicker
   const handleValueChange = (newValue) => {
     setValue(newValue);
     filters.startDate = newValue.startDate;
@@ -71,6 +73,20 @@ const DefaultColumn = ({ children }) => {
 
 const SelectDestination = () => {
   const { filters } = useContext(FiltersContext);
+  const [destinations, setDestinations] = useState([]);
+
+  useEffect(() => {
+    new RequestMaker("http://127.0.0.1:8000/api/destinations", "GET").send().then((data) => setDestinations(data));
+  }, []);
+
+  function buildOptions() {
+    return destinations.map((destination) => (
+      <option key={destination.id} value={destination.id} className="dark:bg-dark-2">
+        {destination.city + " - " + destination.country}
+      </option>
+    ));
+  }
+
   return (
     <>
       <label className="mb-[10px] block text-base font-medium text-dark dark:text-white">Destination</label>
@@ -102,19 +118,12 @@ const SelectDestination = () => {
         <select
           id="destination"
           className="relative z-20 w-full appearance-none rounded-md border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-12 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
-          onChange={() => {filters.destination = document.getElementById("destination").value;
-          console.log(filters);
+          onChange={() => {
+            filters.destination = document.getElementById("destination").value;
+            console.log(filters);
           }}
         >
-          <option value="USA" className="dark:bg-dark-2">
-            USA
-          </option>
-          <option value="UK" className="dark:bg-dark-2">
-            UK
-          </option>
-          <option value="Canada" className="dark:bg-dark-2">
-            Canada
-          </option>
+          {buildOptions()} // dynamically generated options from the API
         </select>
         <span className="absolute top-1/2 right-4 z-10 -translate-y-1/2">
           <svg width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -135,6 +144,23 @@ const SelectDestination = () => {
 
 const CategorySelect = () => {
   const { filters } = useContext(FiltersContext);
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    new RequestMaker("http://127.0.0.1:8000/api/categories", "GET").send().then((data) => {
+      setCategories(data);
+    });
+  }, []);
+
+  function buildOptions() {
+    return categories.map((category) => (
+      <option key={category.id} value={category.id} className="dark:bg-dark-2">
+        {category.name}
+      </option>
+    ));
+  }
+
   return (
     <>
       <label className="mb-[10px] block text-base font-medium text-dark dark:text-white">Category</label>
@@ -142,17 +168,9 @@ const CategorySelect = () => {
         <select
           id="category"
           className="relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
-          onChange={() => filters.category = document.getElementById("category").value}
+          onChange={() => (filters.category = document.getElementById("category").value)}
         >
-          <option value="Option" className="dark:bg-dark-2">
-            Option
-          </option>
-          <option value="nope" className="dark:bg-dark-2">
-            Nope
-          </option>
-          <option value="veryoptye" className="dark:bg-dark-2">
-            VeryOptionYes
-          </option>
+          {buildOptions()}
         </select>
         <span className="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color"></span>
       </div>
