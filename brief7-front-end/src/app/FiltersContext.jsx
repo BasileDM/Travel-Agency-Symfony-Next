@@ -1,24 +1,29 @@
 "use client";
 
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const FiltersContext = createContext();
 
 export function FiltersContextProvider({ children }) {
 
-  const valueA = 135432;
-
-  const filters = {
-    destination: "lol",
-    category: "",
+  const [filters, setFilters] = useState({
+    destination: "",
+    category: "Category 0",
     startDate: "",
     endDate: "",
+  });
+
+  const updateCategoryFilter = (value) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      category: value,
+    }));
   };
 
   const contextValues = {
-    valueA,
-    filters
-  }
+    filters,
+    updateCategoryFilter,
+  };
 
   return <FiltersContext.Provider value={contextValues}>{children}</FiltersContext.Provider>;
 }

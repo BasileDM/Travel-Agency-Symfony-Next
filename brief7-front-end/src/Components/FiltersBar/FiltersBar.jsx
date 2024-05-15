@@ -81,7 +81,7 @@ const SelectDestination = () => {
 
   function buildOptions() {
     return destinations.map((destination) => (
-      <option key={destination.id} value={destination.id} className="dark:bg-dark-2">
+      <option key={destination.id} value={destination.city} className="dark:bg-dark-2">
         {destination.city + " - " + destination.country}
       </option>
     ));
@@ -143,7 +143,7 @@ const SelectDestination = () => {
 };
 
 const CategorySelect = () => {
-  const { filters } = useContext(FiltersContext);
+  const { filters, updateCategoryFilter } = useContext(FiltersContext);
 
   const [categories, setCategories] = useState([]);
 
@@ -155,7 +155,7 @@ const CategorySelect = () => {
 
   function buildOptions() {
     return categories.map((category) => (
-      <option key={category.id} value={category.id} className="dark:bg-dark-2">
+      <option key={category.id} value={category.name} className="dark:bg-dark-2">
         {category.name}
       </option>
     ));
@@ -168,7 +168,10 @@ const CategorySelect = () => {
         <select
           id="category"
           className="relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
-          onChange={() => (filters.category = document.getElementById("category").value)}
+          onChange={() => {
+            updateCategoryFilter(document.getElementById("category").value);
+            console.log(filters);
+          }}
         >
           {buildOptions()}
         </select>
