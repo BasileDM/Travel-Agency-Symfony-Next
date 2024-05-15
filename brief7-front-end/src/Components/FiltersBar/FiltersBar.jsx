@@ -5,18 +5,21 @@ import { FiltersContext } from "@/app/FiltersContext";
 import RequestMaker from "@/js/class/RequestMaker";
 
 export default function FiltersBar() {
-  const { filters } = useContext(FiltersContext);
+  const { filters, updateStartDateFilter, updateEndDateFilter } = useContext(FiltersContext);
 
   // Value is used by react-tailwindcss-datepicker
   const [value, setValue] = useState({
     startDate: new Date(),
     endDate: new Date().setMonth(11),
   });
+
   // handleValueChange is used by react-tailwindcss-datepicker
   const handleValueChange = (newValue) => {
     setValue(newValue);
     filters.startDate = newValue.startDate;
     filters.endDate = newValue.endDate;
+    updateStartDateFilter(newValue.startDate);
+    updateEndDateFilter(newValue.endDate);
   };
 
   return (
@@ -72,7 +75,7 @@ const DefaultColumn = ({ children }) => {
 };
 
 const SelectDestination = () => {
-  const { filters } = useContext(FiltersContext);
+  const { filters, updateDestinationFilter } = useContext(FiltersContext);
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
@@ -119,10 +122,10 @@ const SelectDestination = () => {
           id="destination"
           className="relative z-20 w-full appearance-none rounded-md border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-12 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
           onChange={() => {
-            filters.destination = document.getElementById("destination").value;
-            console.log(filters);
+            updateDestinationFilter(document.getElementById("destination").value);
           }}
         >
+          <option value="">Peu importe !</option>
           {buildOptions()} // dynamically generated options from the API
         </select>
         <span className="absolute top-1/2 right-4 z-10 -translate-y-1/2">
@@ -170,9 +173,9 @@ const CategorySelect = () => {
           className="relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
           onChange={() => {
             updateCategoryFilter(document.getElementById("category").value);
-            console.log(filters);
           }}
         >
+          <option value="">Aucune</option>
           {buildOptions()}
         </select>
         <span className="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color"></span>
