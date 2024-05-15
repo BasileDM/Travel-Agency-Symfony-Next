@@ -34,16 +34,14 @@ export default function Destinations(props) {
   }, [trips, page]);
 
   return (
-    <>
-      <FiltersContextProvider>
-        <Navbar />
-        <main>
-          <FiltersBar />
-          {trips && <CardsGrid trips={displayedTrips} />}
-          {trips && <Pagination trips={trips} setPage={setPage} page={page} />}
-        </main>
-        <Footer />
-      </FiltersContextProvider>
-    </>
+    <FiltersContextProvider>
+      <Navbar />
+      <main>
+        <FiltersBar />
+        {trips && <CardsGrid trips={displayedTrips} />}
+        {trips && <Pagination trips={trips} setPage={setPage} page={page} />}
+      </main>
+      <Footer />
+    </FiltersContextProvider>
   );
 }

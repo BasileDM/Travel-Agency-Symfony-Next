@@ -3,6 +3,9 @@ import { useContext, useState } from "react";
 import { FiltersContext } from "@/app/FiltersContext";
 
 export default function FiltersBar() {
+  
+  const { filters } = useContext(FiltersContext);
+
   const [value, setValue] = useState({
     startDate: new Date(),
     endDate: new Date().setMonth(11),
@@ -10,9 +13,9 @@ export default function FiltersBar() {
 
   const handleValueChange = (newValue) => {
     setValue(newValue);
+    filters.startDate = newValue.startDate;
+    filters.endDate = newValue.endDate;
   };
-
-  const { filters } = useContext(FiltersContext);
 
   return (
     <section className="py-0 dark:bg-dark">
@@ -67,6 +70,7 @@ const DefaultColumn = ({ children }) => {
 };
 
 const SelectDestination = () => {
+  const { filters } = useContext(FiltersContext);
   return (
     <>
       <label className="mb-[10px] block text-base font-medium text-dark dark:text-white">Destination</label>
@@ -95,14 +99,20 @@ const SelectDestination = () => {
             </g>
           </svg>
         </span>
-        <select className="relative z-20 w-full appearance-none rounded-md border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-12 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2">
-          <option value="" className="dark:bg-dark-2">
+        <select
+          id="destination"
+          className="relative z-20 w-full appearance-none rounded-md border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-12 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
+          onChange={() => {filters.destination = document.getElementById("destination").value;
+          console.log(filters);
+          }}
+        >
+          <option value="USA" className="dark:bg-dark-2">
             USA
           </option>
-          <option value="" className="dark:bg-dark-2">
+          <option value="UK" className="dark:bg-dark-2">
             UK
           </option>
-          <option value="" className="dark:bg-dark-2">
+          <option value="Canada" className="dark:bg-dark-2">
             Canada
           </option>
         </select>
@@ -124,21 +134,23 @@ const SelectDestination = () => {
 };
 
 const CategorySelect = () => {
+  const { filters } = useContext(FiltersContext);
   return (
     <>
       <label className="mb-[10px] block text-base font-medium text-dark dark:text-white">Category</label>
       <div className="relative z-20">
         <select
+          id="category"
           className="relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
-          onChange={() => console.log("test")}
+          onChange={() => filters.category = document.getElementById("category").value}
         >
-          <option value="" className="dark:bg-dark-2">
+          <option value="Option" className="dark:bg-dark-2">
             Option
           </option>
-          <option value="" className="dark:bg-dark-2">
+          <option value="nope" className="dark:bg-dark-2">
             Nope
           </option>
-          <option value="" className="dark:bg-dark-2">
+          <option value="veryoptye" className="dark:bg-dark-2">
             VeryOptionYes
           </option>
         </select>
