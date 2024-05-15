@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState } from "react";
 
+import { FiltersContextProvider } from "@/app/FiltersContext";
 import RequestMaker from "@/js/class/RequestMaker";
 
 import CardsGrid from "@/Components/CardsGrid/CardsGrid";
@@ -9,19 +10,6 @@ import Footer from "@/Components/Footer/Footer";
 import Navbar from "@/Components/Navbar/Navbar";
 import Pagination from "@/Components/Pagination/Pagination";
 import FiltersBar from "@/Components/FiltersBar/FiltersBar";
-
-export const filtersContext = createContext();
-
-export function filtersContextProvider({ children }) {
-  const filters = {
-    destination: "lol",
-    category: "",
-    startDate: "",
-    endDate: "",
-  };
-
-  return <filtersContext.Provider value={{ filters }}>{children}</filtersContext.Provider>;
-}
 
 export default function Destinations(props) {
   const [trips, setTrips] = useState();
@@ -47,7 +35,7 @@ export default function Destinations(props) {
 
   return (
     <>
-      <filtersContextProvider>
+      <FiltersContextProvider>
         <Navbar />
         <main>
           <FiltersBar />
@@ -55,7 +43,7 @@ export default function Destinations(props) {
           {trips && <Pagination trips={trips} setPage={setPage} page={page} />}
         </main>
         <Footer />
-      </filtersContextProvider>
+      </FiltersContextProvider>
     </>
   );
 }

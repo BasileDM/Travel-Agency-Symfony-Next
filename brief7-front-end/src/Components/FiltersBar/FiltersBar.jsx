@@ -1,6 +1,6 @@
 import Datepicker from "react-tailwindcss-datepicker";
 import { useContext, useState } from "react";
-import { filtersContext } from "@/app/destinations/page";
+import { FiltersContext } from "@/app/FiltersContext";
 
 export default function FiltersBar() {
   const [value, setValue] = useState({
@@ -12,14 +12,13 @@ export default function FiltersBar() {
     setValue(newValue);
   };
 
-  const destination = useContext(filtersContext);
-  console.log(destination.destination); // HEEEEEEEEEEEEEELP
+  const { filters } = useContext(FiltersContext);
 
   return (
     <section className="py-0 dark:bg-dark">
       <div className="container -py-6">
         <div className="-mx-4 flex flex-wrap">
-          <DefaultColumn >
+          <DefaultColumn>
             <SelectDestination />
           </DefaultColumn>
 
@@ -129,7 +128,7 @@ const CategorySelect = () => {
     <>
       <label className="mb-[10px] block text-base font-medium text-dark dark:text-white">Category</label>
       <div className="relative z-20">
-        <select 
+        <select
           className="relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2"
           onChange={() => console.log("test")}
         >
