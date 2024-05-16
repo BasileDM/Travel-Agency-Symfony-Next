@@ -16,8 +16,6 @@ export default function FiltersBar() {
   // handleValueChange is used by react-tailwindcss-datepicker
   const handleValueChange = (newValue) => {
     setValue(newValue);
-    filters.startDate = newValue.startDate;
-    filters.endDate = newValue.endDate;
     updateStartDateFilter(newValue.startDate);
     updateEndDateFilter(newValue.endDate);
   };

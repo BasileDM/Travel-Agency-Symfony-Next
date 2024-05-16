@@ -13,13 +13,17 @@ export default function CardsGrid(props) {
 
   useEffect(() => {
     const filtered = props.trips.filter((trip) => {
-      console.log(filters.end_date, trip.end_date);
+      console.log(new Date(trip.start_date), new Date(filters.startDate));
+      console.log(new Date(trip.end_date), new Date(filters.endDate));
       const destinationFilterPassed = !filters.destination || trip.destination.city === filters.destination;
       const categoryFilterPassed = !filters.category || trip.category[0].name === filters.category;
-      const startDateFilterPassed = !filters.start_date || new Date(trip.start_date) >= new Date(filters.start_date);
-      const endDateFilterPassed = !filters.end_date || new Date(trip.end_date) <= new Date(filters.end_date);
+      const startDateFilterPassed = !filters.startDate || new Date(trip.start_date) <= new Date(filters.startDate);
+      const endDateFilterPassed = !filters.endDate || new Date(trip.end_date) >= new Date(filters.endDate);
 
-      return destinationFilterPassed && categoryFilterPassed && startDateFilterPassed && endDateFilterPassed;
+      if (destinationFilterPassed && categoryFilterPassed && (startDateFilterPassed && endDateFilterPassed)) {
+        console.log({startDateFilterPassed, endDateFilterPassed});
+      }
+      return destinationFilterPassed && categoryFilterPassed && (startDateFilterPassed && endDateFilterPassed);
     });
     setFilteredTrips(filtered);
   }, [filters]);
