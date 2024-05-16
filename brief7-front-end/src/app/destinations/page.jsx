@@ -10,6 +10,7 @@ import Footer from "@/Components/Footer/Footer";
 import Navbar from "@/Components/Navbar/Navbar";
 import Pagination from "@/Components/Pagination/Pagination";
 import FiltersBar from "@/Components/FiltersBar/FiltersBar";
+import { API_URL } from "@/js/config";
 
 export default function Destinations(props) {
   const [trips, setTrips] = useState();
@@ -23,7 +24,7 @@ export default function Destinations(props) {
       setPage(1);
     }
 
-    new RequestMaker("http://127.0.0.1:8000/api/trips", "GET").send().then((data) => {
+    new RequestMaker(API_URL + "trips", "GET").send().then((data) => {
       setTrips(data);
       setDisplayedTrips(data.slice(0, 12));
     });
