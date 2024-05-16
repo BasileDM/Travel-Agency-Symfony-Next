@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 
 import { FiltersContext } from "@/app/FiltersContext";
 import RequestMaker from "@/js/class/RequestMaker";
+import { API_URL } from "@/js/config";
 
 export default function FiltersBar() {
   const { filters, updateStartDateFilter, updateEndDateFilter } = useContext(FiltersContext);
@@ -77,7 +78,7 @@ const SelectDestination = () => {
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-    new RequestMaker("http://127.0.0.1:8000/api/destinations", "GET").send().then((data) => setDestinations(data));
+    new RequestMaker(API_URL + "destinations", "GET").send().then((data) => setDestinations(data));
   }, []);
 
   function buildOptions() {
@@ -149,7 +150,7 @@ const CategorySelect = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    new RequestMaker("http://127.0.0.1:8000/api/categories", "GET").send().then((data) => {
+    new RequestMaker(API_URL + "categories", "GET").send().then((data) => {
       setCategories(data);
     });
   }, []);
