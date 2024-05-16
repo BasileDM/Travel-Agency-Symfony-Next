@@ -114,7 +114,7 @@ const ContactForm = () => {
                   <div>
                     <div
                       onClick={sendRequest}
-                      className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
+                      className="text-center cursor-pointer w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
                     >
                       Envoyer
                     </div>
