@@ -47,14 +47,14 @@ location /votre_nom/nom_du_projet/ {
 ```
 
 ## Versions et prérequis
-MySQL Server version: 8.2.0
-PHP 8.3+
-Node 21.7.1
-React 18.3
-Next 14.2.3
-Tailwind CSS 3.4.1 https://tailwindcss.com/docs/installation
-Tailgrids 2.2.0 https://tailgrids.com/docs/getting-started
-Symfony 7 https://symfony.com/doc/current/setup.html
+- MySQL Server version: 8.2.0
+- PHP 8.3+
+- Node 21.7.1
+- React 18.3
+- Next 14.2.3
+- Tailwind CSS 3.4.1 https://tailwindcss.com/docs/installation
+- Tailgrids 2.2.0 https://tailgrids.com/docs/getting-started
+- Symfony 7 https://symfony.com/doc/current/setup.html
 
 ## Routes API
 /api/trips (GET) : pour la liste de tous les voyages
