@@ -57,17 +57,17 @@ location /votre_nom/nom_du_projet/ {
 - Symfony 7 https://symfony.com/doc/current/setup.html
 
 ## Routes API
-/api/trips (GET) : pour la liste de tous les voyages
-/api/trip/Trip name (GET) : Pour les détails d'un voyage
-/api/destinations (GET) : Pour la liste des destinations
-/api/categories (GET) : Pour la liste des catégories
-/api/reservation/new (POST) : Pour soumettre une nouvelle réservation
-/api/contact/new (POST) : Pour soumettre une demande de contact 
+- /api/trips (GET) : pour la liste de tous les voyages
+- /api/trip/Trip name (GET) : Pour les détails d'un voyage
+- /api/destinations (GET) : Pour la liste des destinations
+- /api/categories (GET) : Pour la liste des catégories
+- /api/reservation/new (POST) : Pour soumettre une nouvelle réservation
+- /api/contact/new (POST) : Pour soumettre une demande de contact 
 
 ## Utilisateur par défaut
-admin@admin.com pour un utilisateur de type administrateur
-user@user.com pour un utilisateur de type éditeur
-Pass : 1234
+- admin@admin.com pour un utilisateur de type administrateur
+- user@user.com pour un utilisateur de type éditeur
+- Pass : 1234
 
 ## Fichiers utiles 
 Le fichier MCD avec son schéma se trouvent dans le dossier Ressources
