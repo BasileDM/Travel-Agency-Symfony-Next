@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { FiltersContext } from "@/app/FiltersContext";
-
 import Card from "@/Components/Card/Card";
-import { UNSPLASH_KWS } from "@/js/config";
+// import { UNSPLASH_KWS } from "@/js/config";
 
 export default function CardsGrid(props) {
   let trips = props.trips;
@@ -13,8 +11,6 @@ export default function CardsGrid(props) {
 
   useEffect(() => {
     const filtered = props.trips.filter((trip) => {
-      console.log(new Date(trip.start_date), new Date(filters.startDate));
-      console.log(new Date(trip.end_date), new Date(filters.endDate));
       const destinationFilterPassed = !filters.destination || trip.destination.city === filters.destination;
       const categoryFilterPassed = !filters.category || trip.category[0].name === filters.category;
       const startDateFilterPassed = !filters.startDate || new Date(trip.start_date) <= new Date(filters.startDate);
@@ -33,10 +29,11 @@ export default function CardsGrid(props) {
       <div className="container">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {filteredTrips.map((trip) => {
+            const imageSrc = `/imgs/card_300x180.jpg`;
             return (
               <Card
                 key={trip.id}
-                image={UNSPLASH_KWS}
+                image={imageSrc}
                 CardTitle={trip.name}
                 titleHref={"/" + trip.name.split(" ").join("-")}
                 btnHref={"/" + trip.name.split(" ").join("-")}

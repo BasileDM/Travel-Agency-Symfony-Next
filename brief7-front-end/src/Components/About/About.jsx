@@ -1,5 +1,5 @@
 import React from "react";
-import { UNSPLASH_DETAILS, UNSPLASH_DETAILS2 } from "@/js/config";
+// import { UNSPLASH_DETAILS, UNSPLASH_DETAILS2 } from "@/js/config";
 
 const About1 = (props) => {
   let startDate = new Date(props.tripInfo.start_date).toLocaleDateString("fr-FR", {
@@ -23,15 +23,15 @@ const About1 = (props) => {
               <div className="flex items-center -mx-3 sm:-mx-4">
                 <div className="w-full px-3 sm:px-4 xl:w-1/2">
                   <div className="py-3 sm:py-4">
-                    <img src={UNSPLASH_DETAILS} alt="" className="w-full rounded-2xl" />
+                    <img src={`/imgs/details_270x320.jpg`} alt="" className="w-full rounded-2xl" />
                   </div>
                   <div className="py-3 sm:py-4">
-                    <img src={UNSPLASH_DETAILS} alt="" className="w-full rounded-2xl" />
+                    <img src={`/imgs/details_270x320.jpg`} alt="" className="w-full rounded-2xl" />
                   </div>
                 </div>
                 <div className="w-full px-3 sm:px-4 xl:w-1/2">
                   <div className="relative z-10 my-4">
-                    <img src={UNSPLASH_DETAILS2} alt="" className="w-full rounded-2xl" />
+                    <img src={`/imgs/details_270x400.jpg`} alt="" className="w-full rounded-2xl" />
                     <span className="absolute -right-7 -bottom-7 z-[-1]">
                       <svg
                         width={134}
