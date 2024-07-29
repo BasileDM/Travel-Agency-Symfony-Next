@@ -1,5 +1,4 @@
 import React from "react";
-// import { UNSPLASH_DETAILS, UNSPLASH_DETAILS2 } from "@/js/config";
 
 const About1 = (props) => {
   let startDate = new Date(props.tripInfo.start_date).toLocaleDateString("fr-FR", {

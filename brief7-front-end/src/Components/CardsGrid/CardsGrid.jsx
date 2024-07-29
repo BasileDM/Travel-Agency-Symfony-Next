@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FiltersContext } from "@/app/FiltersContext";
 import Card from "@/Components/Card/Card";
-// import { UNSPLASH_KWS } from "@/js/config";
 
 export default function CardsGrid(props) {
   let trips = props.trips;

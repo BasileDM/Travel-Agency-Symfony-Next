@@ -1,4 +1,3 @@
-// import { UNSPLASH_HERO } from "@/js/config";
 import React, { useState } from "react";
 
 const Hero = () => {

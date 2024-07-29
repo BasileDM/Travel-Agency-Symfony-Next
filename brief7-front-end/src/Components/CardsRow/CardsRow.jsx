@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
 import Link from "next/link";
-// import { UNSPLASH_KWS } from "@/js/config";
 
 const CardsRow = (props) => {
   const trips = props.trips;
