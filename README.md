@@ -16,7 +16,7 @@ En back-office, l'utilisateur pourra en fonction de son rôle :
 - Ajouter/modifier/supprimer des réservations et demandes
 - Ajouter/modifier/supprimer des voyages
 
-L'API du back-end devait pouvoir renvoyer les information de la base de données et communiquer avec le front-end exclusivement en JSON.
+L'API du back-end devait pouvoir renvoyer les informations de la base de données et communiquer avec le front-end exclusivement en JSON.
 
 ## Mise en place du projet
 
