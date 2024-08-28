@@ -64,10 +64,5 @@ location /votre_nom/nom_du_projet/ {
 - /api/reservation/new (POST) : Pour soumettre une nouvelle réservation
 - /api/contact/new (POST) : Pour soumettre une demande de contact 
 
-## Utilisateur par défaut
-- admin@admin.com pour un utilisateur de type administrateur
-- user@user.com pour un utilisateur de type éditeur
-- Pass : 1234
-
 ## Fichiers utiles 
 Le fichier MCD avec son schéma se trouvent dans le dossier Ressources
